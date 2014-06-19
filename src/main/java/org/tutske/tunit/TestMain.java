@@ -3,7 +3,6 @@ package org.tutske.tunit;
 import java.io.PrintStream;
 
 import org.junit.runner.JUnitCore;
-import org.junit.runner.notification.RunListener;
 
 
 public class TestMain {
@@ -21,9 +20,7 @@ public class TestMain {
 
 	public void run (Class<?> ... classes) {
 		JUnitCore junit = new JUnitCore ();
-		RunListener listener = new TestListener (out);
-		junit.addListener (listener);
-
+		junit.addListener (new TestListener (out));
 		junit.run (classes);
 		out.println ();
 	}
